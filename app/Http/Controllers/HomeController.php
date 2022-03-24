@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        session([ 'active-Menu' => 'home-index']);
         return view('home');
     }
 }

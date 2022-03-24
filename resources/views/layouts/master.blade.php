@@ -1,110 +1,102 @@
+
+
+
 <!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<html lang="en">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <head>
-        <meta charset="utf-8" />
-        <title> @yield('title') | AT Creative</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        @include('layouts.head')
-    </head>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-    @section('body')
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="{{ URL::asset('assets/dist/css/sidebars.css')}}" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+                        
+                    </ul>
 
-    @show
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
 
-    <body>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
 
-    <div id="preloader">
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
-        <div id="status">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
 
-            <div class="spinner-chase">
-
-                <div class="chase-dot"></div>
-
-                <div class="chase-dot"></div>
-
-                <div class="chase-dot"></div>
-
-                <div class="chase-dot"></div>
-
-                <div class="chase-dot"></div>
-
-                <div class="chase-dot"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Begin page -->
-
-    <div id="layout-wrapper">
-
-
-            <!-- ============================================================== -->
-
-            <!-- Start right Content here -->
-
-            <!-- ============================================================== -->
-
-            <div class="main-content">
-
-            <div class="page-content" style="padding-top: 1em;">
-
-                <div class="container-fluid">
-
-                    @yield('content')
-
+                    </ul>
                 </div>
-
-                <!-- container-fluid -->
-
             </div>
+        </nav>
 
-            <!-- End Page-content -->
-
-            @include('layouts.footer')
-
+        <main class="py-4 col-md-12">
+            @include('layouts.sidebar')
+            <div class="col-md-10 container-fluid">
+                @yield('content')
             </div>
+        </main>
+        @include('layouts.footer')
 
-            <!-- end main content-->
 
     </div>
-
-    <!-- END layout-wrapper -->
-
-
-
-    <!-- Right Sidebar -->
-
-
-
-
-    <!-- /Right-bar -->
-
-
-
-    <!-- Right bar overlay-->
-
-    <div class="rightbar-overlay"></div>
-
-
-
-    <!-- JAVASCRIPT -->
 
     <script>
-
         // const sessionLogout = "<?php echo session('dhp-logout'); ?>";
         // console.log('session',sessionLogout);
-
     </script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     @include('layouts.footer-script')
 
-    </body>
-
+</body>
 </html>
-
