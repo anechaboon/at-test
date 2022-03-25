@@ -9,7 +9,16 @@
     <h3>Search Users</h3>
     @csrf
     <div class="row col-12">
-        <input type="text" class="form-control" name="search" id="search">
+        
+
+        <div class="input-group mb-3">
+            <div class="input-group-text">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <input type="text" class="form-control" name="search" id="search" placeholder="Type to Search">
+        </div>
+        
+
         <table id="datatable" class="table table-striped">
             <thead>
                 <tr>

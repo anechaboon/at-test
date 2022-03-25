@@ -35,7 +35,7 @@
                     </tr>
                     <tr>
                         <td><p>Date of Birth : </p> </td>
-                        <td>{{$user->birthdate}}</td>
+                        <td>{{date('d F Y', strtotime($user->birthdate)); }}</td>
                     </tr>
                     <tr>
                         <td><p>Gender : </p> </td>

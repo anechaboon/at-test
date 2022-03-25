@@ -51,7 +51,7 @@ $(document).ready( function () {
                     $('tbody').html('')
                     $.each(response.data, function (key, val) {
                         let age = getAge(val.birthdate);
-                        let social = val.social_media.replace(",", " ");
+                        let social = val.social_media.replaceAll(",", " ");
                         
                         $('tbody').append(
                             `<tr>

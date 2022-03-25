@@ -91,7 +91,7 @@ class RegisterController extends Controller
         if(isset($data['social_media']) and !empty($data['social_media'])){
             $socialMedie = implode(",",$data['social_media']);
         }
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
@@ -102,5 +102,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'created_at' => date('Y-m-d H:i:s'),
         ]);
+        session([ 'userId' => $user->id]);
+
+        return $user;
     }
 }

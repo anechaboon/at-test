@@ -69,6 +69,10 @@
                             <div class="col-md-6">
                                 {{-- <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus> --}}
                                 <input type="file" accept="image/*" onchange="loadFile(event)" id="image" name="image" aria-label="File browser example">
+                                
+                                {{-- <input type="button" id="image"  name="image" value="Browse" accept="image/*" onchange="loadFile(event)" onclick="document.getElementById('file').click();" />
+                                <input type="file" style="display:none;" id="file" name="file"/> --}}
+                                
                                 <img id="output" width="150" height="150" @if(old('image')) value="{{ old('image') }}" @else value=""@endif>
                                 <span class="file-custom"></span>
 
@@ -95,10 +99,10 @@
                                 </div>
                                 <div class="col-md-6 row">
                                     <div class="col-md-6">
-                                        <input type="radio" class="pull-right" id="female" name="gender" value="Femail" required>
+                                        <input type="radio" class="pull-right" id="female" name="gender" value="Female" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="female"><p >Femail</p></label>
+                                        <label for="female"><p >Female</p></label>
                                     </div>
                                 </div>
                                 
