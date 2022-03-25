@@ -18,4 +18,5 @@ Route::get('/', [HomeController::class, 'index'])->name('home'); // Home
 Route::get('/home', [HomeController::class, 'index'])->name('home'); // Home
 Route::get('users', [UserController::class, 'index'])->name('users'); // User List
 Route::get('profile/{id}', [UserController::class, 'profile'])->name('profile');
+Route::post('searchUser', [UserController::class, 'searchUser'])->name('searchUser');
 

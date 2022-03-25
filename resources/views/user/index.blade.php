@@ -7,16 +7,18 @@
 
 @section('content')
     <h3>Search Users</h3>
+    @csrf
     <div class="row col-12">
+        <input type="text" class="form-control" name="search" id="search">
         <table id="datatable" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Social</th>
-                    <th>Profile Image</th>
+                    <th class="no-sort">Name</th>
+                    <th >Age <i class="fa-sort fa-solid fa-sort-up fa-sort-down hover"></i></th>
+                    <th class="no-sort">Email</th>
+                    <th class="no-sort">Gender</th>
+                    <th class="no-sort">Social</th>
+                    <th class="no-sort">Profile Image</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +40,9 @@
 @endsection
 
 @section('script')
+    <script>
+        var searchUser = "{{route('searchUser')}}";
+    </script>
     <script src="{{ URL::asset('assets/js/pages/user-index.init.js')}}"></script>
 
 @endsection

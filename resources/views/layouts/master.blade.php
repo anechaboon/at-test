@@ -24,7 +24,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    @include('layouts.head')
+        @include('layouts.head')
 
 </head>
 <body>

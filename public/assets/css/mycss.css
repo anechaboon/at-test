@@ -1,3 +1,6 @@
 .pull-right{
     float: right;
 }
+.hover:hover{
+    cursor: pointer;
+}
