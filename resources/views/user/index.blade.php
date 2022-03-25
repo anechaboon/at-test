@@ -6,28 +6,28 @@
 @endsection
 
 @section('content')
-
+    <h3>Search Users</h3>
     <div class="row col-12">
         <table id="datatable" class="table table-striped">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                    <th>Age</th>
                     <th>Email</th>
-                    <th>Address</th>
-                    <th>Tel.</th>
+                    <th>Gender</th>
+                    <th>Social</th>
+                    <th>Profile Image</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
                     <tr>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->lastname}}</td>
-                        <td>{{$user->username}}</td>
+                        <td>{{$user->name.' '.$user->lastname}}</td>
+                        <td>{{ \App\Helpers\Helper::calAge($user->birthdate) }}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->address}}</td>
-                        <td>{{$user->tel}}</td>
+                        <td>{{$user->gender}}</td>
+                        <td>{{str_replace(","," ",$user->social_media) }}</td>
+                        <td><img src="assets/images/users/{{$user->image}}" alt="Girl in a jacket" width="60" height="70"> </td>
                     </tr>
                 @endforeach
             </tbody>
